@@ -1,6 +1,7 @@
 ## Content
 - [Content](#content)
   - [PRD](#prd)
+  - [Concept Practiced by this project](#concept-practiced-by-this-project)
   - [README](#readme)
   - [project flow](#project-flow)
   - [how to implement something](#how-to-implement-something)
@@ -46,7 +47,31 @@ html[]
 js[]  
 tailwind[]
 
-***notes***
+### Concept Practiced by this project
+1. Local storage crud aana chaiye.
+2. DOM manipulation  
+   - CreateElement  
+     - className
+     - textContent
+     - innerHTML
+     - innerText
+     - addEventListner
+     - classList
+       - add 
+       - remove
+       - toggle
+   - appendElement
+     - append
+     - appendChild
+3. Input ke saath kaam karna aana chaiye
+4. Array,object aana chaiye.
+   - ***Array***
+      - forEach
+      - basic function
+      - formation as data
+   - ***object***
+     - push data in array as object..
+     - working with object
 
 
 
@@ -77,7 +102,7 @@ tailwind[]
 
 ```
 
-2. ***Inpute value get***  
+2. ***Input value get***  
 
 ```js
 //select input bar
@@ -108,3 +133,47 @@ todo.innerHTML = `
 
 
 ```
+***How to work with localStorage***   
+
+1. ***Storing data into localStorage***  
+***syntax***   
+`localStorage.setItem("key","value");`  
+value can be string only so Use ***JSON.stringify(obj/array)***;
+
+***example***  
+```js
+let todos = ["buy milk", "walk dog"];
+localStorage.setItem("todos", JSON.stringify(todos));
+```  
+
+2. ***Retriving Data from localStorage***  
+   ***syntax***
+   `localStorage.getItem("key");`  
+
+   use ***JSON.parse(obj/arr)*** to convert back into array/obj.
+
+   ***window.addEventListner("load",callbacK)*** - to load things when window load..
+
+   ***example***  
+   ```js  
+   window.addEventListener("load", () => {  
+    const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    console.log(savedTodos);});
+    ```  
+
+3. ***Update***
+   fetch -> modify -> strignfy -> storeAgain  
+   ***setItem is used***
+   ```js
+   let todos = JSON.parse(localStorage.getItem("todos")) || [];  
+   todos.push("new task");  
+   localStorage.setItem("todos", JSON.stringify(todos));
+   ```
+
+4. ***Removing and clear***  
+   
+  ***Removing*** - remove specific key item  
+  `localStorage.removeItem("todos");` 
+
+  ***Clear*** - clear the local storage  
+  `localStorage.clear();` 
